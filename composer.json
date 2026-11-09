@@ -1,0 +1,16 @@
+{
+    "name": "strukt/bundle-auth",
+    "description": "AuthModule authentication and RBAC bundle for Strukt",
+    "type": "strukt-module",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Strukt\\Bundle\\": "src/Strukt/Bundle/"
+        }
+    },
+    "require-dev": {
+        "strukt/framework": "dev-master",
+        "strukt/orm":"dev-master"
+    },
+    "minimum-stability": "dev"
+}
