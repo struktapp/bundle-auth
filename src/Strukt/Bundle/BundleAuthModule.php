@@ -17,10 +17,11 @@ use Strukt\Framework\Contract\Bundle as BundleInterface;
 class BundleAuthModule implements BundleInterface
 {
     private array $manifest = [
-        'cmd_name' => null,
+        'cmd_name' => 'AuthModule',
         'bundle' => 'bundle-auth',
         'files' => [
             'app/src/App/AuthModule/Controller/User.sgf',
+            'app/src/App/AuthModule/Form/ResetPassword.sgf',
             'app/src/App/AuthModule/Form/User.sgf',
             'app/src/App/AuthModule/Router/Auth.sgf',
             'app/src/App/AuthModule/Router/Index.sgf',
@@ -34,6 +35,7 @@ class BundleAuthModule implements BundleInterface
             'app/src/App/Role.sgf',
             'app/src/App/RoleUser.sgf',
             'app/src/App/User.sgf',
+            'lib/App/Command/ResetPassword.php',
             'lib/App/Provider/Auth.php',
             'lib/App/Provider/Database.php',
             'lib/App/Provider/Session.php',
@@ -51,7 +53,9 @@ class BundleAuthModule implements BundleInterface
                     \App\Provider\Database::class,
                 ],
                 'middlewares' => [],
-                'commands' => [],
+                'commands' => [
+                    \App\Command\ResetPassword::class,
+                ],
             ],
             'App:Idx' => [
                 'providers' => [

@@ -10,7 +10,7 @@ applications.
 | Composer package | `strukt/bundle-auth` |
 | Bundle class | `Strukt\Bundle\BundleAuthModule` |
 | Bundle name | `bundle-auth` |
-| Command name | `null` (no CLI commands) |
+| Command name | `AuthModule` (`reset:password`) |
 | Modules | `AuthModule` |
 | Module class | `{{app}}\AuthModule\{{app}}AuthModule` |
 | Requires | `core` |
@@ -19,6 +19,7 @@ applications.
 
 ```text
 app/src/App/...                     portable module and model templates
+lib/App/Command/ResetPassword.php   reset:password console command
 lib/App/Provider/...                application provider wiring
 src/Strukt/Bundle/BundleAuthModule.php
 ```
@@ -30,9 +31,36 @@ application name, map `app/src/App/...` to `app/src/<App>/...`, and write
 
 The descriptor manifest `files` array lists these portable payload files, and
 its `modules` array lists the modules included in the bundle. Non-application
-provider files are copied unchanged and still use the original application
-namespace. Review them when installing into an application with a different
-name.
+files keep their paths, but references to the source application namespace are
+exported as `{{app}}` and resolved by `bundle:publish`.
+
+## Password reset
+
+The bundle includes an administrator password reset form and route:
+
+```text
+POST /user/{id:int}/reset-password
+```
+
+The route is guarded by `@Auth()` and `@Permission(user.update)`. It accepts
+`password` and `password_confirmation`, both required, with the password at
+least eight characters and the confirmation matching.
+
+The same reset is available from the console after enabling the command in
+`cfg/cmd.ini`:
+
+```ini
+[bundle-auth]
+title = Bundle Auth
+cmd[] = reset:password
+```
+
+```sh
+./strukt reset:password admin@strukt.test
+```
+
+The command prompts for the email when omitted, then reads the new password and
+confirmation without echoing them.
 
 ## Registration
 
