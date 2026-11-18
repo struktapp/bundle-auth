@@ -1,6 +1,6 @@
 {
     "name": "strukt/bundle-auth",
-    "description": "AuthModule authentication and RBAC bundle for Strukt",
+    "description": "Authentication and RBAC bundle for Strukt",
     "type": "strukt-module",
     "license": "MIT",
     "autoload": {

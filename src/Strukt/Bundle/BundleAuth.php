@@ -9,15 +9,15 @@ use Strukt\Framework\ConfigLoader;
 use Strukt\Framework\Contract\Bundle as BundleInterface;
 
 /**
- * AuthModule bundle descriptor.
+ * Auth bundle descriptor.
  *
  * WARNING: THIS FILE IS AUTO-GENERATED. DO NOT ADD ANYTHING
  * BECAUSE IT WILL BE OVERWRITTEN.
  */
-class BundleAuthModule implements BundleInterface
+class BundleAuth implements BundleInterface
 {
     private array $manifest = [
-        'cmd_name' => 'AuthModule',
+        'cmd_name' => 'Auth',
         'bundle' => 'bundle-auth',
         'files' => [
             'app/src/App/AuthModule/Controller/User.sgf',

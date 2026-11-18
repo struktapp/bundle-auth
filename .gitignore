@@ -1,5 +1,6 @@
 /app/
-/cfg/
+/cfg/*
+!/cfg/cmd.ini
 /lib/
 /templates/
 /database/

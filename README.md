@@ -1,4 +1,4 @@
-# Strukt AuthModule Bundle
+# Strukt Auth Bundle
 
 Authentication, users, roles, permissions, and route protection for Strukt
 applications.
@@ -8,9 +8,9 @@ applications.
 | Property | Value |
 | --- | --- |
 | Composer package | `strukt/bundle-auth` |
-| Bundle class | `Strukt\Bundle\BundleAuthModule` |
+| Bundle class | `Strukt\Bundle\BundleAuth` |
 | Bundle name | `bundle-auth` |
-| Command name | `AuthModule` (`reset:password`) |
+| Command name | `Auth` (`reset:password`) |
 | Modules | `AuthModule` |
 | Module class | `{{app}}\AuthModule\{{app}}AuthModule` |
 | Requires | `core` |
@@ -21,7 +21,7 @@ applications.
 app/src/App/...                     portable module and model templates
 lib/App/Command/ResetPassword.php   reset:password console command
 lib/App/Provider/...                application provider wiring
-src/Strukt/Bundle/BundleAuthModule.php
+src/Strukt/Bundle/BundleAuth.php
 ```
 
 The application files use the `{{app}}` placeholder and the stable
@@ -67,7 +67,7 @@ confirmation without echoing them.
 Make the descriptor autoloadable, then register it in `cfg/repo.ini`:
 
 ```ini
-auth_module = BundleAuthModule
+auth = BundleAuth
 ```
 
 Rebuild the application configuration cache:
@@ -75,5 +75,5 @@ Rebuild the application configuration cache:
 ```sh
 ./strukt cache:reset
 ./strukt bundle:ls
-./strukt bundle:info auth_module
+./strukt bundle:info auth
 ```
